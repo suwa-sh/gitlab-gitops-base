@@ -7,6 +7,7 @@ RUN set -eux; \
 		curl \
 		git \
 		jq \
+		ssh \
 	; \
 	rm -rf /var/lib/apt/lists/*;
 
