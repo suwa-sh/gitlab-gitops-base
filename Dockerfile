@@ -8,6 +8,7 @@ RUN set -eux; \
 		git \
 		jq \
 		ssh \
+		sshpass \
 	; \
 	rm -rf /var/lib/apt/lists/*;
 
@@ -15,14 +16,7 @@ RUN set -eux; \
 	curl https://raw.githubusercontent.com/zaquestion/lab/master/install.sh | bash; \
 	wget https://github.com/mikefarah/yq/releases/download/3.4.1/yq_linux_amd64 -O /usr/bin/yq; chmod +x /usr/bin/yq;
 
-RUN set -eux; \
-	groupadd -r app; \
-	useradd -r -g app app; \
-	mkdir /home/app; \
-	chown -R app:app /home/app;
-
-USER app
-WORKDIR /home/app
+WORKDIR /usr/src
 
 ENTRYPOINT ["sh"]
 CMD ["--help"]
